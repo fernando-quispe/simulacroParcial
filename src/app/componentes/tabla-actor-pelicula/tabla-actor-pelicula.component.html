@@ -1,0 +1,31 @@
+<h1 class="display-3">Listado de Actores</h1>
+<p>Se debe utilizar tanto como grilla, con la posibilidad de intercalar la vista entre ambas.</p>
+@if (vista) {<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Apellido</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Seleccionar</th>
+        <!-- <th scope="col">Detalle</th>
+        <th scope="col">Modificar</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      @for (itemactor of listadoActores; track itemactor) {<tr>
+        <td>{{itemactor.apellido}}</td>
+        <td>{{itemactor.nombre}}</td>
+       <!--  <td><button type="button" class=" btn btn-info btn-circle btn-danger"  (click)="bajaDetallePelicula(itempelicula)"></button></td> --> <!-- Borrar -->
+        <td><button type="button" class=" btn btn-info btn-circle btn-warning" (click)="mostrarDetalleActor(itemactor)"></button></td>  <!-- Detalle -->
+        <!-- <td><button type="button" class=" btn btn-info btn-circle btn-success"></button></td>  --> <!-- Modificar -->
+      </tr>}
+    </tbody>
+</table>}
+  
+@if (!vista) {<div class="wrapper">  
+    @for (itemactor of listadoActores; track itemactor) {<div (click)="mostrarDetalleActor(itemactor)">
+        <span>{{itemactor.apellido}} </span>
+        <span>{{itemactor.nombre}}</span>
+    </div>}
+</div>}
+<br>
+<p><a class="btn btn-primary btn-lg" (click)="CambiarVista()" role="button">Cambiar vista  </a></p>

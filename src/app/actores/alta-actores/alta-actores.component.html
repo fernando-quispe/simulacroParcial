@@ -1,0 +1,82 @@
+<app-menu-gral></app-menu-gral>
+<br><br><br><br>
+<div class="container">
+    @if(loading){<div  class="d-flex justify-content-center mt-5">
+        <!--<app-spinner></app-spinner>-->
+    </div>}
+    <div class="py-5 text-center">
+        <h2>ALTA DE ACTOR</h2>
+    </div>
+    @if(!loading){<div  class="row">
+        <!--Tabla banderas-->
+        <div class="col-md-4 order-md-2 mb-4" > 
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted flexbox">Nacionalidad</span>
+                </h4>    
+            <!--<app-tabla-pais (eventoPaisSeleccionado)="mostrarPais()"></app-tabla-pais> -->
+            <!--<app-tabla-pais (eventoPaisSeleccionado)="mostrarPais($event)"></app-tabla-pais> ver este tema-->
+        </div> 
+         <!--Datos actor-->
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Datos personales</h4>
+            <form class="needs-validation" [formGroup]="registrarForm" (ngSubmit)="registar()">
+                <div class="row">
+                   <!--  Nombre -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" formControlName = 'nombre'>
+                            @if(registrarForm.get('nombre')?.hasError('required') && registrarForm.get('nombre')?.touched){<span class="text-danger">
+                                El Nombre <strong>es requerido</strong>
+                            </span>}
+                            @if(registrarForm.get('nombre')?.hasError('minlength') && registrarForm.get('nombre')?.touched){<span class="text-danger">
+                                Nombre como minimo <strong>debe tener 4 caracteres</strong>
+                            </span>}
+                    </div>
+                    <!-- Apellido -->
+                    <div class="col-md-6 mb-3">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" class="form-control" formControlName="apellido">
+                            @if(registrarForm.get('apellido')?.hasError('required') && registrarForm.get('apellido')?.touched){<span class="text-danger">
+                                El Apellido <strong>es requerido</strong>
+                            </span>}
+                            @if(registrarForm.get('apellido')?.hasError('minlength') && registrarForm.get('apellido')?.touched){<span class="text-danger">
+                                Apellido como minimo <strong>debe tener 4 caracteres</strong>
+                            </span>}
+                    </div>
+                    <!-- Email -->
+                    <div class="col-md-6 mb-3">
+                        <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                        <input type="email" class="form-control" placeholder="you@example.com" formControlName="email">
+                            @if(registrarForm.get('email')?.hasError('required') && registrarForm.get('email')?.touched){<span class="text-danger">
+                                El Correo <strong>es requerido</strong>
+                            </span>}
+                            @if(registrarForm.get('email')?.hasError('email') && registrarForm.get('email')?.touched){<span class="text-danger">
+                                Correo <strong>invalido</strong>
+                            </span>}
+                    </div>
+                    <!-- Dirección -->
+                    <div class="col-md-6 mb-3">
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" class="form-control" formControlName="direccion">
+                            @if(registrarForm.get('direccion')?.hasError('required') && registrarForm.get('direccion')?.touched){<span class="text-danger">
+                                La Dirección <strong>es requerido</strong>
+                            </span>}
+                            @if(registrarForm.get('direccion')?.hasError('minlength') && registrarForm.get('direccion')?.touched){<span class="text-danger">
+                                Dirección como minimo <strong>debe tener 4 caracteres</strong>
+                            </span>}
+                    </div>
+                </div>
+                <!-- País -->
+                <div class="col-md-6 mb-3">
+                    <label for="nacionalidad">Nacionalidad:</label>
+                    <input type="text" class="form-control"  placeholder="{{pais}}" 
+                    formControlNamevalue="nacionalidad" readonly>
+                </div>
+                <hr class="mb-4">
+                <div class="col-md-12 text-center">
+                    <button type="submit" [disabled]="registrarForm.invalid" class="btn btn-primary btn-lg center-block">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>}
+</div>

@@ -1,0 +1,27 @@
+<app-menu-gral></app-menu-gral>
+<!-- Main jumbotron for a primary marketing message or call to action &raquo;-->
+<div class="jumbotron">
+    <div class="container">
+        <!-- <app-tabla-pelicula [listadoPeliculas]="peliculas" (onPeliculaSelccionada)="mostrarDetallePelicula($event)"></app-tabla-pelicula>   -->
+        <app-tabla-actor-pelicula [listadoActores]="actores" (onActorSelccionado)="mostrarDetalleActor($event)"></app-tabla-actor-pelicula>
+    </div>
+  
+    @if(elent){<div class="container" >
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Mostrar Peliculas del Actor -->
+          <app-mostrar-pelicula-actor [actorDetalle]="actualDetalleActor" (clickADetalle)="verDato($event)"></app-mostrar-pelicula-actor>
+        </div>
+        <div class="col-md-4">
+          <!-- Mostrar pais del Actor -->
+          <app-mostrar-pais-actor [actorDetalle]="actualDetalleActor" (clickADetalle)="verDato($event)"></app-mostrar-pais-actor>
+        </div>
+        <div class="col-md-4">
+          <!-- Mostrar detalles del Actor -->          
+          <app-mostrar-detalles-actor [actorDetalle]="actualDetalleActor" (clickADetalle)="verDato($event)"></app-mostrar-detalles-actor>
+        </div>
+      </div>       
+                
+    </div>} <!-- /container -->
+ <!--  </main> -->

@@ -1,0 +1,50 @@
+<app-menu-gral></app-menu-gral>
+<br><br><br><br>
+<div class="d-flex justify-content-center mt-3">
+    <button class="btn-principal btn-quizz">LISTADO DE ACTORES</button>
+</div>
+@if (loading) {<div class="d-flex justify-content-center mt-3">
+    <app-spinner></app-spinner>
+</div>}
+@if (listActores.length > 0 && !loading) {<div class="container">
+    <div class="row mt-3">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Apellido</th>
+                                <th>Nombre</th>
+                                <th>email</th>
+                                <th width="30%">Dirección</th>
+                                <th width="80%">Nacionalidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of listActores; track item) {<tr>
+                                <td>{{ item.apellido }}</td>
+                                <td>{{ item.nombre }}</td>
+                                <td>{{ item.email }}</td>
+                                <td width="30%">{{ item.direccion }}</td>
+                                <td width="80%">{{ item.pais }}</td>
+                            </tr>}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}
+
+@if (listActores.length == 0 && !loading) {<div class="conteiner">
+    <div class="row mt-3">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5>No hay listado para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}

@@ -1,0 +1,12 @@
+<h2>Borrar</h2>
+<div class="col-md-8">
+   <strong><span>{{peliculaDetalle.nombre}} </span></strong>
+   <br>
+   <span>Genero: {{peliculaDetalle.tipo}} </span> 
+   <br>
+   <img [src]="peliculaDetalle.fotoDeLaPelicula" width="100px">
+   <br>
+   <p>Publico: {{peliculaDetalle.cantidadDePublico}} </p>
+   <p>Estreno: {{peliculaDetalle.fechaDeEstreno}} </p>
+   <button class="btn btn-secondary" (click)="borrarPelicula(peliculaDetalle)" role="button">Borrar</button>
+</div> 

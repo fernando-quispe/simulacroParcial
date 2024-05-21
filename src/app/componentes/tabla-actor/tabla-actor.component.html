@@ -1,0 +1,11 @@
+<ul class="list-group mb-3">
+    <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+            <ul class="list-group mb-3 text-muted">
+                @for (actor of listaActores; track actor) {<li (click)="SeleccionarActor(actor)" class="list-group-item d-flex justify-content-between lh-condensed">
+                    <span>{{actor.nombre}} &nbsp; {{actor.apellido}}</span>                    
+                </li>}
+            </ul>
+        </div>
+    </li>
+</ul>

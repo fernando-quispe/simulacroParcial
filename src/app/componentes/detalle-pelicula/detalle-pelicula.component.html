@@ -1,0 +1,14 @@
+<h2>Mostrar</h2>
+<div class="col-md-8">
+    <!-- <h2>[{{peliculaDetalle.id}}]</h2> -->
+   <!--  <p>Aqui van los controles necesarios, segun la entidad y funcionalidad requeridad. </p> -->
+   <strong><span>{{peliculaDetalle.nombre}} </span></strong>
+   <br>
+   <span>Genero: {{peliculaDetalle.tipo}} </span> 
+   <br>
+   <img [src]="peliculaDetalle.fotoDeLaPelicula" width="100px">
+   <br>
+   <p>Publico: {{peliculaDetalle.cantidadDePublico}} </p>
+   <p>Estreno: {{peliculaDetalle.fechaDeEstreno}} </p>
+   <button class="btn btn-secondary" (click)="limpiar(false)" role="button">Limpiar</button>
+</div>

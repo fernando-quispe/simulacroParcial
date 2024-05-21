@@ -1,0 +1,89 @@
+<app-menu-gral></app-menu-gral>
+<br><br><br><br>
+<div class="container">
+    <div *ngIf='loading' class="d-flex justify-content-center mt-5">
+        <app-spinner></app-spinner>
+    </div>
+    <div class="py-5 text-center">
+        <h2>ALTA DE PELÍCULA</h2>
+    </div>
+    <div *ngIf='!loading' class="row">
+        <!--Tabla actores-->
+        <div class="col-md-4 order-md-2 mb-4"> 
+            <div class="flexbox">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">ACTOR</span>
+                </h4>    
+            </div>
+            <div>
+                <app-tabla-actor (seSeleccionoActor)="cambiarActor($event)"></app-tabla-actor>
+            </div>    
+        </div> 
+         <!--Datos de Las Peliculas-->
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Datos de películas</h4>
+            <form class="needs-validation" [formGroup]="registrarForm" (ngSubmit)="registar()">
+                <div class="row">
+                   <!--  Nombre de pelicula -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre">Nombre(Titulo):</label>
+                        <input type="text" class="form-control" formControlName = 'nombre'>
+                            <span class="text-danger"
+                            *ngIf="registrarForm.get('nombre')?.hasError('required') && registrarForm.get('nombre')?.touched">
+                                El Nombre <strong>es requerido</strong>
+                            </span>
+                            <span class="text-danger"
+                            *ngIf="registrarForm.get('nombre')?.hasError('minlength') && registrarForm.get('nombre')?.touched">
+                                Nombre como minimo <strong>debe tener 4 caracteres</strong>
+                            </span>
+                    </div>
+                    <!-- Tipo -->
+                    <div class="col-md-6 mb-3">
+                       <label for="tipo">Tipo: (Seleccione una opción)</label>
+                            <select class="form-control" formControlName="tipo" [(ngModel)] = "opcionestipos[3]">
+                                <option *ngFor="let tipos of opcionestipos"
+                                [value]="tipos" selected>{{tipos}}</option>
+                            </select>
+                            <span class="text-danger"
+                            *ngIf="registrarForm.get('tipo')?.hasError('required') && registrarForm.get('tipo')?.touched">
+                                El Tipo <strong>es requerido</strong>
+                            </span>
+                    </div>
+                    <!-- Fecha de Estreno -->
+                    <div class="col-md-6 mb-3">
+                        <label for="fechaDeEstreno">Fecha de Estreno: </label>
+                        <input type="date" class="form-control" formControlName="fechaDeEstreno">
+                            <span class="text-danger"
+                            *ngIf="registrarForm.get('fechaDeEstreno')?.hasError('required') && registrarForm.get('fechaDeEstreno')?.touched">
+                               Fecha de Estreno <strong>es requerida</strong>
+                            </span>
+                    </div>
+                    <!-- Cantidad de Publico -->
+                    <div class="col-md-6 mb-3">
+                        <label for="cantidadDePublico">La cantidad de Público: </label>
+                        <input type="number" class="form-control" formControlName="cantidadDePublico">
+                            <span class="text-danger"
+                            *ngIf="registrarForm.get('cantidadDePublico')?.hasError('required') && registrarForm.get('cantidadDePublico')?.touched">
+                                La Cantidad de Público <strong>es requerido</strong>
+                            </span>
+                    </div>
+                    <!-- Foto de la Película -->
+                    <div class="col-md-6 mb-3">
+                        <label for="fotoDeLaPelicula">Foto de la Película: <span class="text-muted">(Optional)</span></label>
+                        <input type="file" (change)="uploadImage($event)" class="form-control" formControlName="fotoDeLaPelicula">
+                    </div>
+                    <!-- Apellido del Actor -->
+                    <div class="col-md-6 mb-3">
+                        <label for="apellidoActor">Datos del Actor:</label>
+                        <input type="text" class="form-control"  placeholder="Elegir Actor" value="{{actorNombre}}"
+                        formControlName="actorNombreApellido" >
+                    </div>
+                </div>
+                <!-- <hr class="mb-4"> -->
+                <div class="col-md-12 text-center">
+                    <button type="submit" [disabled]="registrarForm.invalid" class="btn btn-primary btn-lg center-block">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.flexbox {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    width: 100px;
+  
+    background: #e8e80af8;
+    color: #333;
+  }

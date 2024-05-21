@@ -1,0 +1,29 @@
+<h1 class="display-3">Listado de Peliculas</h1>
+<p>Se debe utilizar tanto como grilla, con la posibilidad de intercalar la vista entre ambas.</p>
+@if (vista) {<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Pelicula</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Seleccionar</th> 
+      <!-- <th scope="col">Detalle</th>
+      <th scope="col">Modificar</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    @for (itempelicula of listadoPeliculas; track itempelicula) {<tr>
+      <td>{{itempelicula.nombre}}</td>
+      <td><img width="80 px" [src]="itempelicula.fotoDeLaPelicula"></td>
+      <td><button type="button" class=" btn btn-info btn-circle btn-warning" (click)="mostrarDetallePelicula(itempelicula)"></button></td>  <!-- selecciona la pelicula -->
+    </tr>}
+  </tbody>
+</table>}
+<!-- Tocando el boton cambia la vista -->
+@if (!vista) {<div  class="wrapper">
+  @for (itempelicula of listadoPeliculas; track itempelicula) {<div (click)="mostrarDetallePelicula(itempelicula)">
+      <img width="80 px" [src]="itempelicula.fotoDeLaPelicula">
+      <span>{{itempelicula.nombre}}</span>
+  </div>}
+</div>}
+<br>
+<p><a class="btn btn-primary btn-lg" (click)="CambiarVista()" role="button">Cambiar vista  </a></p>

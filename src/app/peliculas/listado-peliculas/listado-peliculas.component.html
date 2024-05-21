@@ -1,0 +1,51 @@
+<app-menu-gral></app-menu-gral>
+<br><br><br><br>
+<div class="d-flex justify-content-center mt-3">
+    <button class="btn-principal btn-quizz">LISTADO DE PELICULAS</button>
+</div>
+<div *ngIf="loading" class="d-flex justify-content-center mt-3">
+    <app-spinner></app-spinner>
+</div>
+<div *ngIf="listPeliculas.length > 0 && !loading" class="container">
+    <div class="row mt-3">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="20%">Titulo</th>
+                                <th>Tipo</th>
+                                <th width="30%">Estreno</th>
+                                <th width="40%">Cant Público</th>
+                                <th>Foto</th>
+                                <th>Actor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of listPeliculas">
+                                <td width="20%">{{ item.nombre }}</td>
+                                <td>{{ item.tipo }}</td>
+                                <td width="30%">{{ item.fechaDeEstreno }}</td>
+                                <td width="40%">{{ item.cantidadDePublico }}</td>
+                                <td><img width="80 px" [src]="item.fotoDeLaPelicula"></td>
+                                <td>{{ item.actor }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="listPeliculas.length == 0 && !loading" class="conteiner">
+    <div class="row mt-3">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5>No hay listado para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
